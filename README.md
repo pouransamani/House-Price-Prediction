@@ -111,6 +111,7 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
       - `YearBlt` , `YearRemodAdd`, `GarageYrBlt`
  
 - Correlation matrices(Heatmap).
+  ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/e2488c9670c50007abffcd8ab47923e96c0b005b/correlation.png)
   
 - Scatter-Regression plot.
   
@@ -132,6 +133,7 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
         - It also becomes clear the `multicollinearity` is an issue. For example:
             - GarageCars and GarageArea show the same correlations with SalePrice and high correlation between them (0.89).
             - Age_houseBlt, Age_RemodAdd, Age_GargeBlt show the same issue.
+          ![image alt]()
 - Identify any patterns or trends in the data.
 
 ## Feature Engineering:
