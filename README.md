@@ -5,7 +5,8 @@
 - [Executive Summary](#Executive-Summary)
 - [Introduction](#Introduction)
 - [Loading libraries and reading the data](#Loading-libraries-and-reading-the-data)
-- [preproccessing and Exploratory Data Analysis(EDA) ](#preproccessing-and-Exploratory-Data-Analysis-(EDA))
+- [preproccessing and Data Cleaning](#preproccessing-and-Data-Cleaning)
+- [Exploratory Data Analysis(EDA)](#preproccessing-and-Exploratory-Data-Analysis-(EDA))
 - [Feature Engineering](#Feature-Engineering)
 - [Model Development](#Model-Development)
 - [Feature Importance](#Feature-Importance)
@@ -77,6 +78,16 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
  'RoofStyle', 'RoofMatl', 'Exterior1st', 'Exterior2nd', 'MasVnrType', 'ExterQual', 'ExterCond', 'Foundation', 'BsmtQual', 'BsmtCond', 'BsmtExposure', 'BsmtFinType1','BsmtFinType2', 'Heating', 'HeatingQC', 'CentralAir', 'Electrical', 'KitchenQual', 'Functional', 'FireplaceQu', 'GarageType', 'GarageFinish', 'GarageQual', 'GarageCond',
  'PavedDrive', 'PoolQC', 'Fence', 'MiscFeature', 'SaleType', 'SaleCondition']
  
+## preproccessing and Data Cleaning
+ - Handling Duplicat
+   - `There is no duplicate data`
+ - Handling missing values
+    - **Insights from missing data**
+     - According to the bar chart: 35 features have missing values, 6 features are 50% and above, 23 features are below 5% and 6 features are between (5-20)%.
+     - Missing data was computed according to median and mode methods.
+     - To fix the 35 predictors that contains missing values. When I go through each feature having NAs there are multiple variables that relate to Pool, Garage, and Basement, so I deal with them as a group referring to meta data which shows definiton of variables and make it clear that NA in that feature doesn't mean missed value, it means that house dosn't have Pool, Garage, or Basement, so it will be replaced with NONE.
+     - listing features having NAs values
+     - Alley, BsmtQual, BsmtCond, BsmtExposure, BsmtFinType1, BsmtFinType2, FireplaceQu, GarageType, GarageFinish, GarageQual, GarageCond, PoolQC and Fence.
 
 ## preproccessing and Exploratory Data Analysis (EDA)
 Data Cleaning:
