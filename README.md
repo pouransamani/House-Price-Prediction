@@ -65,10 +65,10 @@
 ## Loading Dataset
 train = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
-#### Assign identifiers
+ - Assign identifiers
 train['train_test'] = 1  
 test['train_test'] = 0  
-#### Assign NaN to test SalePrice
+ - Assign NaN to test SalePrice
 test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test set
  - There are 1460 instances of train data and 1459 of test data. Total number of attributes equals 81, from which 36 is quantitative, 43 categorical + Id and SalePrice.
 - Quantitative-numerical features are as follow: 
@@ -147,19 +147,22 @@ I droped these two extreme values.
   - Normalize target.
   - Encode categorical variables into ordinal and dummy variables.
 
-## Model Development:
-- Use the cleaned and preprocessed dataset to build a classification model using DT, LR, KNN, SVM, RF algorithms.
-- Split the dataset into training and testing sets.
-- Train the model with package of algorithms and evaluate its performance using accuracy measure.
-- Explore how model performance changes with different features or transformations using Cross Validation.
-- Tuning the model by GridSearchCV
-- Summarize findings and assess the models accuracies in classification personal loan receiving.
+## Modeling
+Use the cleaned and preprocessed dataset to build the Regression model using LinearRegression, Ridge, Lasso, Random Farest and XGBoost algorithms.
+Explore how model performance changes with different features/or transformed using Cross Validation.
+ - Base Model_Linear Regression
+ - Cross validation with advanced models
+ - 
+ ## Model Evaluation
+ - Evaluate models performance using RMSE and R2 Score measures.
+ - Summarize findings and assess the models performanc in predicting house price.
+ - 
 ## Feature Importance:
 - Use feature importance technique to identify the most influence varaibles and enhancing models performance.
 - Feature selection helps improve model performance by keeping only the most relevant features. Here are some common techniques I used:
   - a. Correlation Analysis
-Remove features highly correlated with each other.
-Keep features that have a good correlation with the target variable.
+Remove features highly correlated with each other. Keep features that have a good correlation with the target variable.
+
   - b. Feature importance  using Algorithms; SelectKBest--f_regression,  Lasso Embedded method, Random Farest, XGBoost, Top Features Selected by Permutation Importance (SVR), and LightGBM.
 
 ## Voting Regressors-Final Submission:
