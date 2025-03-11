@@ -156,10 +156,11 @@ I droped these two extreme values.
 - Summarize findings and assess the models accuracies in classification personal loan receiving.
 ## Feature Importance:
 - Use feature importance technique to identify the most influence varaibles and enhancing models performance.
--For every single algorithm;
-   - Tree-based models (Random Forest, and Decision Tree) → Importance based on feature splits.
-   - Permutation Importance → Measures how model accuracy changes when a feature is shuffled.
-   - Coefficients in Linear Models (Logistic Regression, Linear SVM) → Shows feature weight in prediction.
+- Feature selection helps improve model performance by keeping only the most relevant features. Here are some common techniques I used:
+  - a. Correlation Analysis
+Remove features highly correlated with each other.
+Keep features that have a good correlation with the target variable.
+  - b. Feature importance  using Algorithms; SelectKBest--f_regression,  Lasso Embedded method, Random Farest, XGBoost, Top Features Selected by Permutation Importance (SVR), and LightGBM.
 
 ## Voting Regressors-Final Submission:
  - Combining predictions from different applied machine learning models, provide an average prediction result based on the prediction of all the submodels. 
@@ -167,11 +168,23 @@ I droped these two extreme values.
 
 
 ## Conclusion:
-- The Random Forest model identifies Education, Income, Mortgage, CCAvg, and Family as the most influential factors in predicting personal loan applications.
-- Understanding the impact of these features helps banks refine the model and gain a deeper understanding of applicants' financial behavior.
+- Model Performane:
+  - Lasso Regression is the best choice for predictive accuracy (low RMSE) while also performing automatic feature selection.
+  - XGBoost explains more variance but at the cost of higher error (higher RMSE), possibly due to overfitting.
+  - Random Forest and Ridge Regression perform well but are slightly less optimal than Lasso.
+
+- Top Features for Predicting House Price:
+   - The 20 most important features influencing house prices in this model are:
+     - OverallQual, TotalSF, GrLivArea, GarageCars, Age_HouseBlt, TotalBsmtSF, TotRmsAbvGrd, OverallCond, ExterQual, KitchenQual, MSZoning, CentralAir_N, Age_RemodAdd, GarageArea, GarageType, BsmtQualScore
+- These features highlight the significance of house quality, total living space, basement area, garage capacity, and renovations in determining property prices.  
 
 ## Recommondation:
-- The key factors influencing the prediction of personal loan applications are Education, Income, Mortgage, CCAvg, and Family. These features provide valuable insights that help banks make informed decisions about loan approvals and shape their marketing strategies. By considering these factors, banks can better assess applicants' eligibility and target potential customers more effectively. 
+- Based on this analysis, here is the tips for home buyers:
+  * Prioritize quality over just size—a well-built home with high-quality materials may be a better investment.
+  * Consider future renovations—homes with good bones but outdated interiors can be upgraded for value appreciation.
+  * Check for essential features like garage space, finished basements, and modern kitchens, as they have a direct impact on pricing.
+  * Evaluate the neighborhood & zoning regulations to understand long-term investment potential.
+  * Older homes may be cheaper, but recent renovations can save future costs.
 
  🙂 💻
      
