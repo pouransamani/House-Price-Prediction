@@ -133,13 +133,13 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
         - It also becomes clear the `multicollinearity` is an issue. For example:
             - GarageCars and GarageArea show the same correlations with SalePrice and high correlation between them (0.89).
             - Age_houseBlt, Age_RemodAdd, Age_GargeBlt show the same issue.
-          ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/f9b6848f1a81219a020153a9fc4da33db8ea851d/reg-Scatter%20plot.png)
+          ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/5ad3b7abf6b2392863fda73e8cd87b64b140d46e/reg-Scatter%20plot.png)
 - Identify any patterns or trends in the data.
 
 ## Feature Engineering:
-- Normalize target.
-- Using P-Values, chi-square test for identifying statistically significant features. 
-- Encode categorical variables.
+  - refering to histogram plot, features with no relationship that could be convert to categorical feature, as weel as in order to make the dataset more meaningful and well-structured for EDA, I replaced the numerical encoded values of features  MSSubClass and MoSold to their Real State terms.
+  - Normalize target.
+  - Encode categorical variables into ordinal and dummy variables.
 
 ## Model Development:
 - Use the cleaned and preprocessed dataset to build a classification model using DT, LR, KNN, SVM, RF algorithms.
