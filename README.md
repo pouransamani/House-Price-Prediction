@@ -161,18 +161,10 @@ I droped these two extreme values.
    - Permutation Importance → Measures how model accuracy changes when a feature is shuffled.
    - Coefficients in Linear Models (Logistic Regression, Linear SVM) → Shows feature weight in prediction.
 
-## Voting Classifier:
+## Voting Regressors-Final Submission:
  - Combining predictions from different applied machine learning models, provide an average prediction result based on the prediction of all the submodels. 
 
-|Model |Baseline|Cross Validation|Tuned Performance(GridSearchCV)|Voting Classifier(Ensemble Methode)|
-|------|--------|----------------|------------------------------ |-----------------------------------|
-|Decision Tree| 96.73%|97.20% |97.71% ||
-|Logistic Regression| 95.2%|95.62% |95.68% ||
-|K Nearest Neighbor| 96.93%|96.82%| 97.11%||
-|rbf-SVM| 97.86%|97.57% |97.97% ||
-|linear-SVM|95.26%| 95.65%  | --||
-|Random Forest| 98.20%|98.14%   |98.25% ||
-|Ensemble (Voting Classifier) ||98.17%||                                       97.93% |
+
 
 ## Conclusion:
 - The Random Forest model identifies Education, Income, Mortgage, CCAvg, and Family as the most influential factors in predicting personal loan applications.
