@@ -139,7 +139,7 @@ In order to better performance of model, I did visualize price on Scatter plot t
 ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/0a1a80323cc8055b2ff47f1b52d2036bea4dd680/extreme%20price.png)
 
 I droped these two extreme values.
-![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/0a1a80323cc8055b2ff47f1b52d2036bea4dd680/extreme%20price.png)
+![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/b8a3075f675021847ceac0435ba351d72acc0612/drop%20extreme%20price.png)
 - Identify any patterns or trends in the data.
 
 ## Feature Engineering:
