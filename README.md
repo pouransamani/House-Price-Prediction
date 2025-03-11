@@ -164,9 +164,11 @@ Explore how model performance changes with different features/or transformed usi
 Remove features highly correlated with each other. Keep features that have a good correlation with the target variable.
 ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/b90e18279324183df4c46060ccd49731b5c25ddf/Feature%20importance-Corr.png)
   - b. Feature importance  using Algorithms; SelectKBest--f_regression,  Lasso Embedded method, Random Farest, XGBoost, Top Features Selected by Permutation Importance (SVR), and LightGBM.
-![image alt](
+![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/6e082896c75dbd8cd2689bbbf66e309be2c114e3/feature_importances_XGB.png)
+
 ## Voting Regressors-Final Submission:
  - Combining predictions from different applied machine learning models, provide an average prediction result based on the prediction of all the submodels. 
+![image](https://github.com/user-attachments/assets/dc4517d1-f411-4278-8f59-ea19e37fc199)
 
 
 
