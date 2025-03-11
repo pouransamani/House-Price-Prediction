@@ -23,12 +23,14 @@
     * Random Farest performs well with an average CV R2 Score of 0.8743. 
     * Lasso regression stands on third position with an avarage CV R2 score of 0.8701.
     * As the algorithms are very different, Votingregressor was used for averaging predictions to improve the predictions. 
+
  
   ## Introduction
   - A home buyer describe his dream house. He might focus on the number of bedrooms or the beautiful yard. However, as it will discover in this project, many factors can influence a home's price beyond just its visible features. With a dataset containing 79 variables that describe nearly every aspect of residential properties in Ames, Iowa, the challenge will be to predict the final sale price of each home.
   - This project will give hands-on experience in:
   - Creative Feature Engineering: Identifying and creating new features that could improve model’s performance.
   - Advanced Regression Techniques: Implementing and tuning models such as Random Forests and Gradient Boosting to make accurate predictions.
+
 
 ## Loading libraries and reading the data
 - This section loads the train and test datasets using pandas.  
@@ -59,6 +61,7 @@
 - import warnings
 - warnings.filterwarnings("ignore")
 
+
 ## Loading Dataset
 train = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
@@ -77,6 +80,7 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
    - ['MSZoning',  'Street', 'Alley', 'LotShape', 'LandContour', 'Utilities', 'LotConfig', 'LandSlope', 'Neighborhood', 'Condition1', 'Condition2', 'BldgType', 'HouseStyle',
  'RoofStyle', 'RoofMatl', 'Exterior1st', 'Exterior2nd', 'MasVnrType', 'ExterQual', 'ExterCond', 'Foundation', 'BsmtQual', 'BsmtCond', 'BsmtExposure', 'BsmtFinType1','BsmtFinType2', 'Heating', 'HeatingQC', 'CentralAir', 'Electrical', 'KitchenQual', 'Functional', 'FireplaceQu', 'GarageType', 'GarageFinish', 'GarageQual', 'GarageCond',
  'PavedDrive', 'PoolQC', 'Fence', 'MiscFeature', 'SaleType', 'SaleCondition']
+
  
 ## preproccessing and Data Cleaning
  - Handling Duplicat
@@ -90,21 +94,24 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
      - listing features having NAs values
      - Alley, BsmtQual, BsmtCond, BsmtExposure, BsmtFinType1, BsmtFinType2, FireplaceQu, GarageType, GarageFinish, GarageQual, GarageCond, PoolQC and Fence.
 
+
+
 ## Exploring Data Analysis (EDA) and Data Wrangling
 - Visualize the distribution of each feature.
    - Histplot
      - **Insights for Histogram charts**
-- Features with no significant or atypical statistical distribution; They could be categorical features like `MSSubClass`(I converted this feature to catfeature in **Feature Engineering**), or have a high concentration of zeros, or have very limited variation across values like Pool, Garage and Fireplace groupe features. 
-  - `MSSubClass`, `BsmtFinSF2`, `LowQualFinSF`, `BsmtFullBath`, `BsmtHalfBath`, `FullBath`, `HalfBath`, `BedroomAbvGr`, `KitchenAbvGr`, `Fireplace`, `GarageCars`, `EnclosedPorch`, `3SsnPorch`, `ScreenPorch`, `PoolArea`, `MiscVal`, `MoSold`,`YrSold`
-- Features with normal distribution;
-   - For `LotFrontage` might be influenced by many factors such as location, zoning laws, or the size of neighboring properties, and the combined effect of all these factors leads to a normal distribution.
-   -  `TotalBsmtSF`, `2ndFlrSF`: Aggregated values such as the total square footage of a house or the sum of individual room areas (like TotalBsmtSF), might also exhibit normality.
-- Features with skewness to right; it shows that the distribution has a longer tail on the right, and has logical relationship with price: Larger values for features like GrLivArea and TotRmAbvGrd often correspond to larger homes, which typically command higher prices.  
-  - `OveralQual`,  `LotArea`, `MasVnrarea`, `BsmtFinSF1`, `BsmtUnfSF`, `1stFlrSF`, `GrLivArea`, `TotRmabvGrd`, `GarageArea`, `WoodDeckSF`, `OpenPorchSF`, `SalePrice`  
-- Features with skewness to left; it shows that the distribution has a longer tail on the left side. For features like construction and renovation years, homes tend to be relatively newer in the datasets. This results in more data points being clustered around recent years (higher values) and fewer older properties contribute to the tail on the left. Since in the real state market , they talk about age of the house, I figured out to do some **Feature Engineering** and Convert year to age.  
-   - `YearBlt` , `YearRemodAdd`, `GarageYrBlt`
+       - Features with no significant or atypical statistical distribution; They could be categorical features like `MSSubClass`(I converted this feature to catfeature in **Feature Engineering**), or have a high concentration of zeros, or have very limited variation across values like Pool, Garage and Fireplace groupe features. 
+         - `MSSubClass`, `BsmtFinSF2`, `LowQualFinSF`, `BsmtFullBath`, `BsmtHalfBath`, `FullBath`, `HalfBath`, `BedroomAbvGr`, `KitchenAbvGr`, `Fireplace`, `GarageCars`, `EnclosedPorch`, `3SsnPorch`, `ScreenPorch`, `PoolArea`, `MiscVal`, `MoSold`,`YrSold`
+     - Features with normal distribution;
+       - For `LotFrontage` might be influenced by many factors such as location, zoning laws, or the size of neighboring properties, and the combined effect of all these factors leads to a normal distribution.
+       -  `TotalBsmtSF`, `2ndFlrSF`: Aggregated values such as the total square footage of a house or the sum of individual room areas (like TotalBsmtSF), might also exhibit normality.
+     - Features with skewness to right; it shows that the distribution has a longer tail on the right, and has logical relationship with price: Larger values for features like GrLivArea and TotRmAbvGrd often correspond to larger homes, which typically command higher prices.  
+       - `OveralQual`,  `LotArea`, `MasVnrarea`, `BsmtFinSF1`, `BsmtUnfSF`, `1stFlrSF`, `GrLivArea`, `TotRmabvGrd`, `GarageArea`, `WoodDeckSF`, `OpenPorchSF`, `SalePrice`  
+     - Features with skewness to left; it shows that the distribution has a longer tail on the left side. For features like construction and renovation years, homes tend to be relatively newer in the datasets. This results in more data points being clustered around recent years (higher values) and fewer older properties contribute to the tail on the left. Since in the real state market , they talk about age of the house, I figured out to do some **Feature Engineering** and Convert year to age.  
+      - `YearBlt` , `YearRemodAdd`, `GarageYrBlt`
  
 - Correlation matrices(Heatmap).
+  
 - Scatter-Regression plot.
   
      - **Note resulted form Scatter-regression plots**
