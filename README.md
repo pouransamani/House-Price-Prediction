@@ -84,7 +84,7 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
  - Handling missing values
     - **Insights from missing data**
      - According to the bar chart: 35 features have missing values, 6 features are 50% and above, 23 features are below 5% and 6 features are between (5-20)%.
-  
+  ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/52536cb308286c785b0d35f79109cc26650deb7f/missing%20value%20bar.png)
    
      - Missing data was computed according to median and mode methods.
      - To fix the 35 predictors that contains missing values. When I go through each feature having NAs there are multiple variables that relate to Pool, Garage, and Basement, so I deal with them as a group referring to meta data which shows definiton of variables and make it clear that NA in that feature doesn't mean missed value, it means that house dosn't have Pool, Garage, or Basement, so it will be replaced with NONE.
