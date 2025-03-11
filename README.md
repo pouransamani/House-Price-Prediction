@@ -4,7 +4,7 @@
 
 - [Executive Summary](#Executive-Summary)
 - [Introduction](#Introduction)
-- [Loading libraries required and reading the data](#Loading-libraries-and-reading-the-data)
+- [Loading libraries and reading the data](#Loading-libraries-and-reading-the-data)
 - [preproccessing and Exploratory Data Analysis(EDA) ](#preproccessing-and-Exploratory-Data-Analysis-(EDA))
 - [Feature Engineering](#Feature-Engineering)
 - [Model Development](#Model-Development)
@@ -39,28 +39,44 @@
 - import pandas as pd
 - import matplotlib.pyplot as plt
 - import seaborn as sns
-- plt.style.use('fivethirtyeight')
+- import datetime
 - from sklearn.preprocessing import StandardScaler
-- from sklearn import metrics
-- from sklearn.metrics import roc_auc_score, accuracy_score, classification_report
+- from sklearn.model_selection import train_test_split, KFold, cross_val_score, GridSearchCV
+- import sklearn.linear_model as linear_model
+- from sklearn.metrics import mean_squared_error, r2_score
 - from sklearn.preprocessing import LabelEncoder
-- from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, VotingClassifier
-- from sklearn.preprocessing import LabelEncoder
-- from sklearn.impute import SimpleImputer
+- from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, VotingRegressor
+- from sklearn.inspection import permutation_importance
+- from scipy.stats import  johnsonsu , zscore, skew, boxcox_normmax  # for some statistics
+- from sklearn.linear_model import LinearRegression, LassoCV, RidgeCV, Lasso
+- from sklearn.svm import SVR
+- from sklearn.pipeline import make_pipeline
+- from mlxtend.regressor import StackingCVRegressor
+- from xgboost import XGBRegressor
 - import xgboost as xgb
-- import catboost as cb
-- from sklearn.decomposition import PCA
-- from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV, cross_val_predict
-- from sklearn.linear_model import LogisticRegression
-- from sklearn.tree import DecisionTreeClassifier
-- from sklearn.neighbors import KNeighborsClassifier
-- from sklearn.svm import SVC
-- from sklearn import svm
-- from sklearn.metrics import confusion_matrix
-- from scipy.stats import zscore
-- from collections import Counter
+- from lightgbm import LGBMRegressor
 - import warnings
 - warnings.filterwarnings("ignore")
+
+## Loading Dataset
+train = pd.read_csv('train.csv')
+test = pd.read_csv('test.csv')
+#### Assign identifiers
+train['train_test'] = 1  
+test['train_test'] = 0  
+#### Assign NaN to test SalePrice
+test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test set
+ - There are 1460 instances of train data and 1459 of test data. Total number of attributes equals 81, from which 36 is quantitative, 43 categorical + Id and SalePrice.
+- Quantitative-numerical features are as follow: 
+  - ['MSSubClass', 'LotFrontage', 'LotArea', 'OverallQual', 'OverallCond', 'YearBuilt', 'YearRemodAdd', 'MasVnrArea', 'BsmtFinSF1', 'BsmtFinSF2', 'BsmtUnfSF',
+ 'TotalBsmtSF', '1stFlrSF', '2ndFlrSF', 'LowQualFinSF', 'GrLivArea', 'BsmtFullBath', 'BsmtHalfBath', 'FullBath', 'HalfBath', 'BedroomAbvGr', 'KitchenAbvGr',
+ 'TotRmsAbvGrd', 'Fireplaces', 'GarageYrBlt', 'GarageCars', 'GarageArea', 'WoodDeckSF', 'OpenPorchSF', 'EnclosedPorch', '3SsnPorch', 'ScreenPorch', 'PoolArea', 'MiscVal',
+ 'MoSold', 'YrSold']
+ - Qualitative-categorical features are as follow:
+   - ['MSZoning',  'Street', 'Alley', 'LotShape', 'LandContour', 'Utilities', 'LotConfig', 'LandSlope', 'Neighborhood', 'Condition1', 'Condition2', 'BldgType', 'HouseStyle',
+ 'RoofStyle', 'RoofMatl', 'Exterior1st', 'Exterior2nd', 'MasVnrType', 'ExterQual', 'ExterCond', 'Foundation', 'BsmtQual', 'BsmtCond', 'BsmtExposure', 'BsmtFinType1','BsmtFinType2', 'Heating', 'HeatingQC', 'CentralAir', 'Electrical', 'KitchenQual', 'Functional', 'FireplaceQu', 'GarageType', 'GarageFinish', 'GarageQual', 'GarageCond',
+ 'PavedDrive', 'PoolQC', 'Fence', 'MiscFeature', 'SaleType', 'SaleCondition']
+ 
 
 ## preproccessing and Exploratory Data Analysis (EDA)
 Data Cleaning:
