@@ -134,6 +134,8 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
             - GarageCars and GarageArea show the same correlations with SalePrice and high correlation between them (0.89).
             - Age_houseBlt, Age_RemodAdd, Age_GargeBlt show the same issue.
           ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/5ad3b7abf6b2392863fda73e8cd87b64b140d46e/reg-Scatter%20plot.png)
+# Scatter plot to show extrem house price
+
 - Identify any patterns or trends in the data.
 
 ## Feature Engineering:
