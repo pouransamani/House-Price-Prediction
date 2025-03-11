@@ -6,7 +6,7 @@
 - [Introduction](#Introduction)
 - [Loading libraries and reading the data](#Loading-libraries-and-reading-the-data)
 - [preproccessing and Data Cleaning](#preproccessing-and-Data-Cleaning)
-- [Exploratory Data Analysis(EDA)](#preproccessing-and-Exploratory-Data-Analysis-(EDA))
+- [Exploring Data Analysis (EDA) and Data Wrangling](#Exploring-Data-Analysis-(EDA)-and-Data-Wranglin)
 - [Feature Engineering](#Feature-Engineering)
 - [Model Development](#Model-Development)
 - [Feature Importance](#Feature-Importance)
@@ -85,21 +85,46 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
     - **Insights from missing data**
      - According to the bar chart: 35 features have missing values, 6 features are 50% and above, 23 features are below 5% and 6 features are between (5-20)%.
   ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/52536cb308286c785b0d35f79109cc26650deb7f/missing%20value%20bar.png)
-   
-     - Missing data was computed according to median and mode methods.
+        - Missing data was computed according to median and mode methods.
      - To fix the 35 predictors that contains missing values. When I go through each feature having NAs there are multiple variables that relate to Pool, Garage, and Basement, so I deal with them as a group referring to meta data which shows definiton of variables and make it clear that NA in that feature doesn't mean missed value, it means that house dosn't have Pool, Garage, or Basement, so it will be replaced with NONE.
      - listing features having NAs values
      - Alley, BsmtQual, BsmtCond, BsmtExposure, BsmtFinType1, BsmtFinType2, FireplaceQu, GarageType, GarageFinish, GarageQual, GarageCond, PoolQC and Fence.
 
-## preproccessing and Exploratory Data Analysis (EDA)
-Data Cleaning:
-- Remove duplicate entries.
-- Handle missing values.
-- Correct inconsistencies in the data.
-- Detect and handle outliers.
-- Generate summary statistics for the dataset.
+## Exploring Data Analysis (EDA) and Data Wrangling
 - Visualize the distribution of each feature.
-- Explore relationships between features using scatter plots, correlation matrices(Heatmap), etc.
+   - Histplot
+     - **Insights for Histogram charts**
+- Features with no significant or atypical statistical distribution; They could be categorical features like `MSSubClass`(I converted this feature to catfeature in **Feature Engineering**), or have a high concentration of zeros, or have very limited variation across values like Pool, Garage and Fireplace groupe features. 
+  - `MSSubClass`, `BsmtFinSF2`, `LowQualFinSF`, `BsmtFullBath`, `BsmtHalfBath`, `FullBath`, `HalfBath`, `BedroomAbvGr`, `KitchenAbvGr`, `Fireplace`, `GarageCars`, `EnclosedPorch`, `3SsnPorch`, `ScreenPorch`, `PoolArea`, `MiscVal`, `MoSold`,`YrSold`
+- Features with normal distribution;
+   - For `LotFrontage` might be influenced by many factors such as location, zoning laws, or the size of neighboring properties, and the combined effect of all these factors leads to a normal distribution.
+   -  `TotalBsmtSF`, `2ndFlrSF`: Aggregated values such as the total square footage of a house or the sum of individual room areas (like TotalBsmtSF), might also exhibit normality.
+- Features with skewness to right; it shows that the distribution has a longer tail on the right, and has logical relationship with price: Larger values for features like GrLivArea and TotRmAbvGrd often correspond to larger homes, which typically command higher prices.  
+  - `OveralQual`,  `LotArea`, `MasVnrarea`, `BsmtFinSF1`, `BsmtUnfSF`, `1stFlrSF`, `GrLivArea`, `TotRmabvGrd`, `GarageArea`, `WoodDeckSF`, `OpenPorchSF`, `SalePrice`  
+- Features with skewness to left; it shows that the distribution has a longer tail on the left side. For features like construction and renovation years, homes tend to be relatively newer in the datasets. This results in more data points being clustered around recent years (higher values) and fewer older properties contribute to the tail on the left. Since in the real state market , they talk about age of the house, I figured out to do some **Feature Engineering** and Convert year to age.  
+   - `YearBlt` , `YearRemodAdd`, `GarageYrBlt`
+ 
+- Correlation matrices(Heatmap).
+- Scatter-Regression plot.
+  
+     - **Note resulted form Scatter-regression plots**
+         - Features show `no relation` with Price;
+           - MSSubClass, LowQualFinSF, BmtFinSF2, BsmtHalfBath, 3SsnPorch, MiscVal, MoSold, YrSold, ScreenPorch,
+         - Features with `positive relation with price, high slop regression line`considered as highly important features;
+           - GrLivArea (Above grade living area), OveralQual, totalBsmtSF(Total square feet of basement area),TotRmsAbvGrd, 1stFlrSF(First Floor square feet), BsmtFinishSF1, LotFrontAge,LotArea, MasVnrArea
+           - the recent year the higher price, `YearBuilt`, `YearRemodAdd`, `GarageYrBlt`
+
+         - Features with `positive relation, gentel slop regression line`considered as importance features;
+            -  BsmtFullBath, FullBath(Full bathrooms above grade), HalfBath, BedroomAbvGr, FirePlace, GarageCars, GarageArea, WoodDeckSF, OpenPorchSF, 2ndFlrSF, BsmtUnfSF, PoolArea
+
+        - If year related features be converted to Age, so these Features will present `negative relation, gentel slop regression line`considered as importance features; 
+           - Age_housBlt, Age_RemodAdd, Age_GargeBlt , KitchenAbvGr, EnclosedPorch 
+
+        - Regarding outliers, except two data points, extreme values are not seen. If there is a candidate to take out as an outlier later on, it seems to be the expensive house. It is seen two data points on Lotfrontage, and GrLivArea.
+
+        - It also becomes clear the `multicollinearity` is an issue. For example:
+            - GarageCars and GarageArea show the same correlations with SalePrice and high correlation between them (0.89).
+            - Age_houseBlt, Age_RemodAdd, Age_GargeBlt show the same issue.
 - Identify any patterns or trends in the data.
 
 ## Feature Engineering:
