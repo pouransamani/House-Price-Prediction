@@ -8,10 +8,10 @@
 - [preproccessing and Data Cleaning](#preproccessing-and-Data-Cleaning)
 - [Exploring Data Analysis (EDA) and Data Wrangling](#Exploring-Data-Analysis-(EDA)-and-Data-Wranglin)
 - [Feature Engineering](#Feature-Engineering)
-- [Model Development](#Model-Development)
+- [Modeling](#Modeling)
 - [Feature Importance](#Feature-Importance)
-- [Voting Classifier](#Voting-Classifier):
-- [Model Tuned performance](#Model-Tuned-Performance)
+- [Voting Regressors](#Voting-Regressors):
+- [Model performance](#Model-Performance)
 - [Conclusions](#Conclusions)
 - [Recommendations](#Recommendations)
 
@@ -134,7 +134,7 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
             - GarageCars and GarageArea show the same correlations with SalePrice and high correlation between them (0.89).
             - Age_houseBlt, Age_RemodAdd, Age_GargeBlt show the same issue.
           ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/5ad3b7abf6b2392863fda73e8cd87b64b140d46e/reg-Scatter%20plot.png)
-# Scatter plot to show extrem house price
+- Scatter plot to show extrem house price
 In order to better performance of model, I did visualize price on Scatter plot through two features to find max values.
 ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/0a1a80323cc8055b2ff47f1b52d2036bea4dd680/extreme%20price.png)
 
@@ -153,7 +153,7 @@ Explore how model performance changes with different features/or transformed usi
  - Base Model_Linear Regression
  - Cross validation with advanced models
  - 
- ## Model Evaluation
+ ## Model performance
  - Evaluate models performance using RMSE and R2 Score measures.
  - Summarize findings and assess the models performanc in predicting house price.
    
