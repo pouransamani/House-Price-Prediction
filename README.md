@@ -4,7 +4,7 @@
 
 - [Executive Summary](#Executive-Summary)
 - [Introduction](#Introduction)
-- [Notebook prepration](#Notebook-prepration)
+- [Loading libraries required and reading the data](#Loading-libraries-and-reading-the-data)
 - [preproccessing and Exploratory Data Analysis(EDA) ](#preproccessing-and-Exploratory-Data-Analysis-(EDA))
 - [Feature Engineering](#Feature-Engineering)
 - [Model Development](#Model-Development)
@@ -18,18 +18,22 @@
 
   ## Executive Summary
   - This project started by focusing on getting a good understanding of the dataset. The EDA is detailed and many visualizations are included and followed by modeling. 
-* The XGBoost model performs best with an average CV R2 Score of 0.8869. 
-* Random Farest performs well with an average CV R2 Score of 0.8743. 
-* Lasso regression stands on third position with an avarage CV R2 score of 0.8701.
-* As the algorithms are very different, Votingregressor was used for averaging predictions to improve the predictions. 
+    * The XGBoost model performs best with an average CV R2 Score of 0.8869. 
+    * Random Farest performs well with an average CV R2 Score of 0.8743. 
+    * Lasso regression stands on third position with an avarage CV R2 score of 0.8701.
+    * As the algorithms are very different, Votingregressor was used for averaging predictions to improve the predictions. 
  
   ## Introduction
-- A home buyer describe his dream house. He might focus on the number of bedrooms or the beautiful yard. However, as it will discover in this project, many factors can influence a home's price beyond just its visible features. With a dataset containing 79 variables that describe nearly every aspect of residential properties in Ames, Iowa, the challenge will be to predict the final sale price of each home.
-- This project will give hands-on experience in:
+  - A home buyer describe his dream house. He might focus on the number of bedrooms or the beautiful yard. However, as it will discover in this project, many factors can influence a home's price beyond just its visible features. With a dataset containing 79 variables that describe nearly every aspect of residential properties in Ames, Iowa, the challenge will be to predict the final sale price of each home.
+  - This project will give hands-on experience in:
   - Creative Feature Engineering: Identifying and creating new features that could improve model’s performance.
   - Advanced Regression Techniques: Implementing and tuning models such as Random Forests and Gradient Boosting to make accurate predictions.
 
-## Notebook prepration
+## Loading libraries and reading the data
+- This section loads the train and test datasets using pandas.  
+- The train_test column created to differentiate between training and test data.
+- The test data does not include the actual SalePrice column in the test dataset, it is set to NaN because this is what we need to predict. Adding this column ensures consistency in the structure of both datasets, making them easier to combine.  
+- Both datasets concatenated into a single dataframe for `consistent preprocessing`.
 **1- Import libraries and dataset**
 - import numpy as np
 - import pandas as pd
