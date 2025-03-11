@@ -133,7 +133,7 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
         - It also becomes clear the `multicollinearity` is an issue. For example:
             - GarageCars and GarageArea show the same correlations with SalePrice and high correlation between them (0.89).
             - Age_houseBlt, Age_RemodAdd, Age_GargeBlt show the same issue.
-          ![image alt]()
+          ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/f9b6848f1a81219a020153a9fc4da33db8ea851d/reg-Scatter%20plot.png)
 - Identify any patterns or trends in the data.
 
 ## Feature Engineering:
