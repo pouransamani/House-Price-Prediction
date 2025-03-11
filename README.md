@@ -135,7 +135,11 @@ test['SalePrice'] = np.nan   # Assign NaN to missing target variable in the test
             - Age_houseBlt, Age_RemodAdd, Age_GargeBlt show the same issue.
           ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/5ad3b7abf6b2392863fda73e8cd87b64b140d46e/reg-Scatter%20plot.png)
 # Scatter plot to show extrem house price
+In order to better performance of model, I did visualize price on Scatter plot through two features to find max values.
+![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/0a1a80323cc8055b2ff47f1b52d2036bea4dd680/extreme%20price.png)
 
+I droped these two extreme values.
+![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/0a1a80323cc8055b2ff47f1b52d2036bea4dd680/extreme%20price.png)
 - Identify any patterns or trends in the data.
 
 ## Feature Engineering:
