@@ -156,7 +156,9 @@ Explore how model performance changes with different features/or transformed usi
  ## Model Evaluation
  - Evaluate models performance using RMSE and R2 Score measures.
  - Summarize findings and assess the models performanc in predicting house price.
- - 
+   
+![image](https://github.com/user-attachments/assets/fbd99d88-9e08-4276-babc-6800976da2b4)
+
 ## Feature Importance:
 - Use feature importance technique to identify the most influence varaibles and enhancing models performance.
 - Feature selection helps improve model performance by keeping only the most relevant features. Here are some common techniques I used:
@@ -167,9 +169,9 @@ Remove features highly correlated with each other. Keep features that have a goo
 ![image alt](https://github.com/pouransamani/House-Price-Prediction/blob/6e082896c75dbd8cd2689bbbf66e309be2c114e3/feature_importances_XGB.png)
 
 ## Voting Regressors-Final Submission:
- - Combining predictions from different applied machine learning models, provide an average prediction result based on the prediction of all the submodels. 
+ - Combining predictions from different applied machine learning models, provide an average prediction result based on the prediction of all the submodels.
+   
 ![image](https://github.com/user-attachments/assets/dc4517d1-f411-4278-8f59-ea19e37fc199)
-
 
 
 ## Conclusion:
